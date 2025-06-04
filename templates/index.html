@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audio To Sign Language Tool</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: url('static/bg2.jpg');
+      justify-content: center;
+      background-size: cover;
+      margin: 0;
+      height: 100vh;
+      color: #1e56cf;
+      line-height: 1.4;
+    }
+    nav {
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      margin-bottom: 1rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: rgb(8, 8, 8);
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #1e56cf;
+    }
+    header {
+      background: #96dfec;
+      padding: 1.5rem 1rem;
+      border-bottom: 3px solid #1e56cf;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    main {
+      display: flex;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .left, .right {
+      flex: 1;
+      padding: 1rem;
+    }
+    .left {
+      border-right: 2px solid #1e56cf;
+    }
+    .input-toggle {
+      margin-bottom: 1rem;
+    }
+    .input-toggle label {
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    #text_input_div, #voice_input_div {
+      margin-bottom: 1rem;
+    }
+    #voice_input_div.hidden {
+      display: none;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 0.5rem;
+      border: 2px solid #1e56cf;
+      background: #ffffff;
+      color: #404040;
+      font-size: 1rem;
+    }
+    button, input[type="submit"] {
+      background: #1e56cf;
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .entered-text {
+      margin: 1rem 0;
+    }
+    .keywords {
+      list-style: disc inside;
+      margin-left: 1rem;
+    }
+    .right h2 {
+      margin-bottom: 1rem;
+    }
+    video {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body
+  data-videos='{{ (video_files|default([]))|tojson|safe }}'
+  data-input-type='{{ input_type|default("text") }}'
+>
+  <header>
+    <h1><b>VOICE2SIGN</b></h1>
+  </header>
+  
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('converter') }}">Converter</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <!-- LEFT: Input and results -->
+    <div class="left">
+      <h2>Enter your query</h2>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul>
+            {% for m in messages %}
+              <li style="color:red;">{{ m }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" action="{{ url_for('converter') }}">
+        <div class="input-toggle">
+          <label>
+            <input type="radio" name="input_type" value="text"
+                   onchange="toggleInput('text')"
+                   {% if input_type != 'voice' %}checked{% endif %}>
+            Text
+          </label>
+          <label>
+            <input type="radio" name="input_type" value="voice"
+                   onchange="toggleInput('voice')"
+                   {% if input_type == 'voice' %}checked{% endif %}>
+            Voice
+          </label>
+        </div>
+
+        <div id="text_input_div">
+          <input type="text" name="user_input"
+                 placeholder="Enter your query"
+                 value="{{ user_input or '' }}">
+        </div>
+        <div id="voice_input_div" class="hidden">
+          <button type="button" id="record_button" style="background: #ffffff; color: #404040; border-radius: 50%;">🎤</button>
+          <input type="hidden" name="voice_input" id="voice_input">
+          <p id="voice_status"></p>
+        </div>
+
+        <input type="submit" value="Submit">
+      </form>
+
+      {% if user_input %}
+        <p class="entered-text">
+          You entered: <strong>{{ user_input }}</strong>
+        </p>
+        {% if keyword_results %}
+          <h3>Key words (with accuracy):</h3>
+          <ul class="keywords">
+            {% for kw, score in keyword_results %}
+              <li>{{ kw }} - Accuracy: {{ (score * 100)|round(2) }}%</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <!-- RIGHT: Video player -->
+    <div class="right">
+      <h2>ISL Gesture</h2>
+      <video id="animation" width="200" height="100" controls></video>
+    </div>
+  </main>
+
+  <script>
+    // Toggle between text and voice input
+    function toggleInput(mode) {
+      document.getElementById('text_input_div')
+        .classList.toggle('hidden', mode === 'voice');
+      document.getElementById('voice_input_div')
+        .classList.toggle('hidden', mode !== 'voice');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      toggleInput(document.body.dataset.inputType);
+    });
+
+    // Voice recognition setup
+    const recordBtn   = document.getElementById('record_button'),
+          voiceStatus = document.getElementById('voice_status'),
+          voiceInput  = document.getElementById('voice_input');
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      const SR    = window.SpeechRecognition || window.webkitSpeechRecognition,
+            recog = new SR();
+      recog.lang = 'en-US';
+      recog.interimResults = false;
+      recordBtn.addEventListener('click', () => {
+        voiceStatus.textContent = 'Listening…';
+        recog.start();
+      });
+      recog.addEventListener('result', e => {
+        const t = e.results[0][0].transcript;
+        voiceInput.value = t;
+        voiceStatus.textContent = `You said: "${t}"`;
+      });
+      recog.addEventListener('error', e => {
+        voiceStatus.textContent = `Error: ${e.error}`;
+      });
+    } else {
+      recordBtn.disabled = true;
+      voiceStatus.textContent = 'Voice not supported';
+    }
+
+    // Play videos in sequence
+    const files  = JSON.parse(document.body.dataset.videos),
+          player = document.getElementById('animation');
+    let idx = 0;
+    function playNext() {
+      if (idx < files.length) {
+        player.src = '/video/' + encodeURIComponent(files[idx]);
+        player.load();
+        player.onloadeddata = () => player.play();
+        idx++;
+      }
+    }
+    player.addEventListener('ended', playNext);
+    if (files.length) playNext();
+  </script>
+</body>
+</html>

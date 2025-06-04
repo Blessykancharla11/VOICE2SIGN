@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice2Sign - Home</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            /* Background image settings */
+            background: url('static/img1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 150px; /* Increased size */
+            font-weight: bold; /* Bold text */
+            margin-bottom: 30px;
+            color: #06d2f6;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* optional, to improve readability on background */
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        /* Optional: to add a slight overlay for better text contrast */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(255, 255, 255, 0.5);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Optional overlay div -->
+    <!-- <div class="overlay"></div> -->
+    <h1>Voice2Sign</h1>
+    <a href="{{ url_for('converter') }}">
+        <button class="button">Get Started</button>
+    </a>
+</body>
+</html>

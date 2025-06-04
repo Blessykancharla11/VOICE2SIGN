@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play Combined Videos</title>
+</head>
+<body data-videos='{{ video_files | tojson | safe }}'>
+    <h2>Playing Sequence</h2>
+
+    <video id="videoPlayer" width="640" height="360" controls autoplay></video>
+
+    <script>
+        const videoFiles = JSON.parse(document.body.dataset.videos);
+        const player = document.getElementById("videoPlayer");
+        let currentIndex = 0;
+
+        function playNext() {
+            if (currentIndex < videoFiles.length) {
+                const videoPath = "/video/" + encodeURIComponent(videoFiles[currentIndex]);
+                player.src = videoPath;
+                player.load();
+
+                // Use this only once video metadata is loaded
+                player.onloadeddata = () => {
+                    player.play();
+                };
+
+                currentIndex++;
+            } else {
+                console.log("✅ All videos played.");
+            }
+        }
+
+        // Event: When current video ends
+        player.addEventListener("ended", playNext);
+
+        // Start the first video
+        if (videoFiles.length > 0) {
+            playNext();
+        } else {
+            console.error("❌ No videos found to play.");
+        }
+    </script>
+</body>
+</html>

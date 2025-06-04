@@ -1,0 +1,18 @@
+<!-- templates/select_video_type.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Video Type</title>
+</head>
+<body>
+  <h1>Keypoints Found: {{ keypoints | join(', ') }}</h1>
+  <p>Select the video type to play:</p>
+  <!-- templates/select_video.html -->
+<form method="POST" action="{{ url_for('play_video') }}">
+  <input type="hidden" name="keypoints" value="{{ ','.join(keypoints) }}">
+  <button type="submit">Play Videos</button>
+</form>
+
+</body>
+</html>

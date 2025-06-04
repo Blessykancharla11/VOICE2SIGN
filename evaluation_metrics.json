@@ -1,0 +1,11 @@
+{
+    "precision": 0.444,
+    "recall": 0.667,
+    "f1_score": 0.533,
+    "avg_similarity_correct": 0.938,
+    "avg_similarity_incorrect": 0.479,
+    "video_retrieval_rate": 0.222,
+    "input_handling_accuracy": 1.0,
+    "avg_response_time_seconds": 0.109,
+    "memory_usage_mb": 376.2
+}

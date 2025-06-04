@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - Voice2Sign</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 2rem; 
+      background: url('static/bg2.jpg');
+      justify-content: center;
+      background-size: cover;
+            margin: 0;
+            height: 100vh;
+            /* display: flex; */
+            /* flex-direction: column; */
+            justify-content: center;
+            align-items: center;
+      color: #333; 
+      margin: 0;
+    }
+    nav {
+      /* background-color: #333; */
+      
+      padding: 15px 0; /* increased top/bottom padding */
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      margin-bottom: 1rem; /* additional space below the navigation */
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: rgb(8, 8, 8);
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #1e56cf;
+    }
+    header {
+      background: #96dfec; 
+      padding: 1.5rem 1rem; /* increased vertical padding */
+      border-bottom: 3px solid #1e56cf;
+      text-align: center;
+      /* margin-bottom: 1rem;  */
+      /* space between header and main content */
+    }
+    header h1 {
+      font-size: 2rem;
+      color: #1e56cf;
+      margin-bottom: 0.5rem;
+    }
+    main { 
+      padding: 1rem; 
+    }
+    hr { 
+      margin: 1rem 0; 
+      color: #1e56cf;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>VOICE2SIGN</h1>
+  </header>
+  
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('converter') }}">Converter</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Main Content -->
+  <main>
+    <h1>Contact Us</h1>
+    <p>
+      If you have any questions or feedback regarding Voice2Sign, please email us at 
+      21wh1a05f9@bvrithyderabad.edu.in
+    </p>
+    <!-- <h2>VERSION 1.0.0</h2>
+    <hr>
+    <h2>CONTACT US</h2>
+    <p>For any queries regarding this website, contact us on the following:</p>
+    <p><strong>Email:</strong> audio2sl@gmail.com</p>
+    <p><strong>Twitter:</strong> @audio2sl</p>
+    <p><strong>Phone:</strong> (079) 2583 1703</p>
+    <hr> -->
+    <p>Thank you for visiting our website!</p>
+  </main>
+</body>
+</html>

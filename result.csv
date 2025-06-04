@@ -1,0 +1,125 @@
+name,input,expected,predicted,similarity_score,correct
+A,a,A,a,1.0000001192092896,True
+B,b,B,b,1.0,True
+C,c,C,c,1.0,True
+D,d,D,d,1.0,True
+E,e,E,e,1.0000001192092896,True
+F,f,F,f,1.0000001192092896,True
+G,g,G,g,1.0000001192092896,True
+H,h,H,h,1.0000001192092896,True
+I,i,I,i,1.0,True
+J,j,J,j,1.0,True
+K,k,K,k,1.0,True
+L,l,L,l,1.0,True
+M,m,M,m,0.9999998807907104,True
+N,n,N,n,1.000000238418579,True
+O,o,O,o,1.0000001192092896,True
+P,p,P,p,1.0,True
+Q,q,Q,q,1.0,True
+R,r,R,r,1.0000001192092896,True
+S,s,S,s,1.0,True
+T,t,T,t,1.0,True
+U,u,U,u,1.000000238418579,True
+V,v,V,v,0.9999999403953552,True
+W,w,W,w,1.0,True
+X,x,X,x,1.0,True
+Y,y,Y,y,1.0,True
+Z,z,Z,z,1.0,True
+Hello,hello,Hello,hello,1.0,True
+Indian,indian,Indian,indian,1.0,True
+Sign,sign,Sign,sign,1.0,True
+Language,language,Language,language,1.0000001192092896,True
+Bye,bye,Bye,bye,1.0,True
+Again,again,Again,again,1.0000001192092896,True
+I,i,I,i,1.0,True
+Me,me,Me,me,1.0000001192092896,True
+You,you,You,you,1.0000001192092896,True
+Man,man,Man,man,1.0,True
+Woman,woman,Woman,woman,1.0000001192092896,True
+He,he,He,he,1.0,True
+She,she,She,she,1.0,True
+Deaf,deaf,Deaf,deaf,0.9999999403953552,True
+Hearing,hearing,Hearing,hearing,1.0000001192092896,True
+Teacher,teacher,Teacher,teacher,1.0,True
+Thank_You,thank you,Thank_You,thank_you,1.0,True
+Thank_You_Very_Much,thank you very much,Thank_You_Very_Much,thank_you_very_much,1.0,True
+Welcome,welcome,Welcome,welcome,1.0,True
+Please,please,Please,please,1.0,True
+Sorry,sorry,Sorry,sorry,1.0000001192092896,True
+Namaste,namaste,Namaste,namaste,1.0,True
+How_are_you,how are you,How_are_you,how_are_you,1.0,True
+Iam_fine,iam fine,Iam_fine,iam_fine,1.0,True
+My_name_is,my name is,My_name_is,my_name_is,1.0000001192092896,True
+Practice,practice,Practice,practice,1.0,True
+Yes,yes,Yes,yes,1.0,True
+No,no,No,no,1.0,True
+Good,good,Good,good,1.0,True
+Bad,bad,Bad,bad,1.0000001192092896,True
+Correct,correct,Correct,correct,1.0,True
+Wrong,wrong,Wrong,wrong,1.0,True
+Weak,weak,Weak,weak,1.0,True
+Thin,thin,Thin,thin,1.0,True
+Easy,easy,Easy,easy,1.0000001192092896,True
+Difficult,difficult,Difficult,difficult,1.0,True
+Strong,strong,Strong,strong,0.9999999403953552,True
+Child,child,Child,child,1.0,True
+Boy,boy,Boy,boy,1.0,True
+Girl,girl,Girl,girl,1.0,True
+Food,food,Food,food,1.0,True
+Day,day,Day,day,1.0,True
+Good_Morning,good morning,Good_Morning,good_morning,1.0,True
+Good_Afternoon,good afternoon,Good_Afternoon,good_afternoon,1.0000001192092896,True
+Good_Evening,good evening,Good_Evening,good_evening,1.0000001192092896,True
+Good_Night,good night,Good_Night,good_night,1.0,True
+Peace,peace,Peace,peace,1.0,True
+No_fear,no fear,No_fear,no_fear,1.0,True
+Understand,understand,Understand,understand,1.0,True
+I_dont_understand,i dont understand,I_dont_understand,i_dont_understand,1.0000001192092896,True
+Remember,remember,Remember,remember,1.0000001192092896,True
+Tree,tree,Tree,tree,1.0,True
+Flower,flower,Flower,flower,1.0000001192092896,True
+House,house,House,house,1.000000238418579,True
+Apartment,apartment,Apartment,apartment,1.0,True
+Car,car,Car,car,1.000000238418579,True
+Table,table,Table,table,1.0,True
+Happy,happy,Happy,happy,1.0,True
+Sad,sad,Sad,sad,1.0,True
+Beautiful,beautiful,Beautiful,beautiful,1.0,True
+Ugly,ugly,Ugly,ugly,1.0,True
+Fat,fat,Fat,fat,1.0000001192092896,True
+Tall,tall,Tall,tall,1.0,True
+Short,short,Short,short,1.0,True
+Generous,generous,Generous,generous,1.0,True
+Clever,clever,Clever,clever,1.000000238418579,True
+Sweet,sweet,Sweet,sweet,1.0,True
+Bright,bright,Bright,bright,1.0,True
+Dark,dark,Dark,dark,1.0,True
+Paper,paper,Paper,paper,1.0,True
+Camera,camera,Camera,camera,1.0,True
+Photo,photo,Photo,photo,1.0,True
+Work,work,Work,work,1.0000001192092896,True
+Question,question,Question,question,1.0,True
+Answer,answer,Answer,answer,1.0000001192092896,True
+Time,time,Time,time,0.9999999403953552,True
+Face,face,Face,face,1.0,True
+This,this,This,this,1.0,True
+What,what,What,what,0.9999999403953552,True
+Why,why,Why,why,1.0,True
+How,how,How,how,0.9999998807907104,True
+Where,where,Where,where,1.0,True
+Who,who,Who,who,1.0,True
+When,when,When,when,1.0,True
+Which,which,Which,which,1.0,True
+Family,family,Family,family,1.0,True
+Mother,mother,Mother,mother,1.0,True
+Father,father,Father,father,1.0000001192092896,True
+Wife,wife,Wife,wife,1.0,True
+Husband,husband,Husband,husband,1.0,True
+Daughter,daughter,Daughter,daughter,1.0,True
+Son,son,Son,son,1.0,True
+Sister,sister,Sister,sister,1.0,True
+Brother,brother,Brother,brother,0.9999998807907104,True
+Grandmother,grandmother,Grandmother,grandmother,1.0,True
+Grandfather,grandfather,Grandfather,grandfather,1.0000001192092896,True
+Aunt,aunt,Aunt,aunt,1.0,True
+Uncle,uncle,Uncle,uncle,1.000000238418579,True
