@@ -1,0 +1,9 @@
+flask
+nltk
+sentence-transformers
+torch
+transformers
+mediapipe
+opencv-python
+numpy
+tqdm
