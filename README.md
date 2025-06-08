@@ -89,9 +89,9 @@ Then open your browser and go to:
 
 <img width="600" alt="s2" src="https://github.com/user-attachments/assets/33c9ac26-9126-49e1-8958-c2f128dd7d99" />
 
+
 <img width="600" alt="s3" src="https://github.com/user-attachments/assets/017ccc0a-1289-424a-aa20-daf29449cac4" />
 
-Certainly! Here's a clear and effective conclusion for your VOICE2SIGN project:
 
 ---
 
