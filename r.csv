@@ -1,7 +1,0 @@
-name,input,predicted,similarity_score,correct
-hi,hi,hello,0.8071529865264893,False
-hi_girl,hi girl,girl,0.6925779581069946,False
-good_boy,good boy,boy,0.7302262783050537,False
-grandma,grandma,grandmother,0.9367892146110535,False
-grandpa,grandpa,grandfather,0.892292857170105,False
-iam_sorry,iam sorry,sorry,0.7500357031822205,False
